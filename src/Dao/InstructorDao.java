@@ -75,7 +75,7 @@ public class InstructorDao {
     }
 	
 	public List<Course> retrieveCourseByEmail(String email) {
-	    List<Course> courseList = new ArrayList<>();
+	    List<Course> courseList = null;
 
 	    try (Session session = HibernateUtil.getSession().openSession()) {
 	        Query query = session.createQuery(
@@ -86,9 +86,10 @@ public class InstructorDao {
 
 	    } catch (Exception e) {
 	        e.printStackTrace();
+	        return null; 
 	    }
 
-	    return courseList; // Return an empty list instead of null
+	    return courseList; 
 	}
 
    public List<Instructor> getAllInstructors() {
